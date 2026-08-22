@@ -1,0 +1,215 @@
+{
+  "_comment": "CuraNet — Sample JSON documents per collection (realistic demo data, production-shape)",
+  "users": [
+    {
+      "_id": "ObjectId('...')",
+      "name": "Dr. Ayesha Rahman",
+      "email": "ayesha.rahman@curanet.health",
+      "passwordHash": "$2a$10$...bcrypt...",
+      "phone": "+8801710000002",
+      "role": "doctor",
+      "additionalRoles": [],
+      "avatarUrl": "https://cdn.curanet.health/avatars/ayesha.jpg",
+      "isVerified": true,
+      "isActive": true,
+      "createdAt": "2026-01-01T10:00:00Z"
+    },
+    {
+      "_id": "ObjectId('...')",
+      "name": "Rahim Uddin",
+      "email": "rahim.uddin@example.com",
+      "phone": "+8801810000005",
+      "role": "donor",
+      "additionalRoles": [],
+      "isVerified": true
+    },
+    {
+      "_id": "ObjectId('...')",
+      "name": "Karim Ahmed",
+      "email": "karim.ahmed@example.com",
+      "phone": "+8801910000007",
+      "role": "patient",
+      "isVerified": true
+    }
+  ],
+  "doctorProfiles": [
+    {
+      "_id": "ObjectId('...')",
+      "userId": "ObjectId('...ayesha')",
+      "specialization": ["Cardiology", "Internal Medicine"],
+      "qualifications": ["MBBS (DMC)", "MD Cardiology (NICVD)", "FACC"],
+      "experienceYears": 12,
+      "licenseNumber": "BMDC-A-12345",
+      "bio": "Consultant Cardiologist at National Heart Foundation...",
+      "consultationFee": 1200,
+      "clinicName": "Heart Care Center, Dhanmondi",
+      "clinicAddress": "House 12, Road 7, Dhanmondi, Dhaka-1205",
+      "location": { "type": "Point", "coordinates": [90.3753, 23.7465] },
+      "languages": ["English", "Bengali", "Hindi"],
+      "ratingAvg": 4.8,
+      "ratingCount": 124,
+      "isVerifiedByAdmin": true,
+      "consultationTypes": ["both"],
+      "availabilitySlots": [
+        { "dayOfWeek": "monday", "startTime": "09:00", "endTime": "13:00", "slotDurationMinutes": 30, "isAvailable": true },
+        { "dayOfWeek": "wednesday", "startTime": "09:00", "endTime": "13:00", "slotDurationMinutes": 30, "isAvailable": true }
+      ]
+    }
+  ],
+  "donorProfiles": [
+    {
+      "_id": "ObjectId('...')",
+      "userId": "ObjectId('...rahim')",
+      "bloodGroup": "O+",
+      "gender": "male",
+      "dateOfBirth": "1995-06-15T00:00:00Z",
+      "isAvailable": true,
+      "lastDonationDate": "2025-09-10T00:00:00Z",
+      "totalDonations": 7,
+      "location": { "type": "Point", "coordinates": [90.4125, 23.8103] },
+      "address": "Banani, Dhaka-1213",
+      "healthStatus": "eligible",
+      "weightKg": 72,
+      "phoneVisible": true
+    }
+  ],
+  "patientProfiles": [
+    {
+      "_id": "ObjectId('...')",
+      "userId": "ObjectId('...karim')",
+      "dateOfBirth": "1990-01-10T00:00:00Z",
+      "gender": "male",
+      "bloodGroup": "A+",
+      "allergies": ["Penicillin"],
+      "chronicConditions": ["Hypertension"],
+      "emergencyContact": { "name": "Salma Ahmed", "relationship": "Spouse", "phone": "+8801911111111" },
+      "address": "Mirpur 10, Dhaka",
+      "location": { "type": "Point", "coordinates": [90.3657, 23.8065] }
+    }
+  ],
+  "bloodRequests": [
+    {
+      "_id": "ObjectId('...')",
+      "requesterId": "ObjectId('...karim')",
+      "patientName": "Karim Ahmed",
+      "bloodGroup": "O+",
+      "unitsNeeded": 2,
+      "urgency": "critical",
+      "status": "open",
+      "hospitalName": "Dhaka Medical College Hospital",
+      "hospitalAddress": "Secretariat Road, Dhaka-1000",
+      "location": { "type": "Point", "coordinates": [90.3944, 23.7258] },
+      "contactPhone": "+8801910000007",
+      "neededByDate": "2026-02-20T00:00:00Z",
+      "description": "Urgent O+ needed for cardiac surgery."
+    }
+  ],
+  "bloodDonations": [
+    {
+      "_id": "ObjectId('...')",
+      "donorId": "ObjectId('...donorProfileB+')",
+      "donorUserId": "ObjectId('...nusrat')",
+      "requestId": "ObjectId('...bloodRequestB+')",
+      "unitsDonated": 1,
+      "donationDate": "2025-12-10T00:00:00Z",
+      "location": { "type": "Point", "coordinates": [90.3753, 23.7465] },
+      "status": "completed",
+      "notes": "Donated at Square Hospital blood bank.",
+      "verifiedBy": "ObjectId('...admin')"
+    }
+  ],
+  "appointments": [
+    {
+      "_id": "ObjectId('...')",
+      "patientId": "ObjectId('...karim')",
+      "doctorId": "ObjectId('...doctorProfileAyesha')",
+      "doctorUserId": "ObjectId('...ayesha')",
+      "appointmentDate": "2026-02-15T00:00:00Z",
+      "timeSlot": { "startTime": "09:30", "endTime": "10:00", "dayOfWeek": "monday" },
+      "consultationType": "offline",
+      "status": "completed",
+      "reason": "Chest pain and hypertension follow-up",
+      "fee": 1200,
+      "prescriptionNotes": "ECG normal, continue Amlodipine 5mg.",
+      "ruleMatchMeta": { "matchedSpecialty": "Cardiology", "matchedLocation": true, "matchedAvailability": true, "distanceKm": 2.3 }
+    }
+  ],
+  "reviews": [
+    {
+      "_id": "ObjectId('...')",
+      "patientId": "ObjectId('...karim')",
+      "doctorId": "ObjectId('...doctorProfileAyesha')",
+      "appointmentId": "ObjectId('...appointment1')",
+      "rating": 5,
+      "comment": "Excellent cardiologist, explained everything transparently.",
+      "isAnonymous": false
+    }
+  ],
+  "courses": [
+    {
+      "_id": "ObjectId('...')",
+      "title": "Heart Health 101: Preventing Cardiovascular Disease",
+      "slug": "heart-health-101",
+      "description": "Evidence-based course on hypertension, diet, exercise...",
+      "category": "chronic_disease",
+      "level": "beginner",
+      "instructorId": "ObjectId('...ayesha')",
+      "thumbnailUrl": "https://cdn.curanet.health/courses/heart-health.jpg",
+      "tags": ["cardiology", "prevention", "hypertension"],
+      "isPublished": true,
+      "isFeatured": true,
+      "durationMinutes": 45,
+      "lessons": [
+        {
+          "_id": "ObjectId('...')",
+          "title": "Understanding Blood Pressure",
+          "description": "What is hypertension?",
+          "contentType": "video",
+          "videoUrl": "https://cdn.curanet.health/videos/bp-intro.mp4",
+          "content": "Article transcript...",
+          "durationMinutes": 15,
+          "order": 1,
+          "isPreview": true,
+          "resources": ["https://cdn.curanet.health/resources/bp-chart.pdf"]
+        },
+        {
+          "title": "Exercise and Heart Health Quiz",
+          "contentType": "quiz",
+          "durationMinutes": 10,
+          "order": 3,
+          "quiz": { "questions": [{ "question": "Normal BP is?", "options": ["120/80 mmHg", "140/90 mmHg", "100/60 mmHg"], "correctIndex": 0 }] }
+        }
+      ]
+    }
+  ],
+  "enrollments": [
+    {
+      "_id": "ObjectId('...')",
+      "userId": "ObjectId('...karim')",
+      "courseId": "ObjectId('...heartHealth')",
+      "progress": 66,
+      "completedLessonIds": ["ObjectId('...lesson1')", "ObjectId('...lesson2')"],
+      "status": "in_progress",
+      "enrolledAt": "2026-01-10T00:00:00Z",
+      "lastAccessedAt": "2026-02-10T00:00:00Z"
+    }
+  ],
+  "articles": [
+    {
+      "_id": "ObjectId('...')",
+      "title": "How to Lower Blood Pressure Without Medication",
+      "slug": "lower-bp-without-medication",
+      "excerpt": "Lifestyle interventions that reduce hypertension risk by up to 30%.",
+      "content": "# Lower BP Naturally\n1. Reduce sodium <2.3g/day\n2. 150min/week exercise...",
+      "category": "chronic_disease",
+      "tags": ["hypertension", "lifestyle", "prevention"],
+      "authorId": "ObjectId('...ayesha')",
+      "coverImageUrl": "https://cdn.curanet.health/articles/bp-lifestyle.jpg",
+      "readingTimeMinutes": 6,
+      "views": 342,
+      "likes": 45,
+      "isPublished": true,
+      "publishedAt": "2026-01-15T00:00:00Z"
+    }
+  ]
+}

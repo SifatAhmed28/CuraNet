@@ -1,0 +1,17 @@
+{
+  "name": "curanet-db",
+  "version": "1.0.0",
+  "description": "CuraNet - One Website for Every Health Decision - MongoDB Atlas provisioning (MERN)",
+  "type": "commonjs",
+  "main": "src/seed/seed.js",
+  "scripts": {
+    "seed": "node src/seed/seed.js",
+    "provision": "node src/seed/seed.js",
+    "verify": "node src/verify.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.9.5",
+    "bcryptjs": "^2.4.3"
+  }
+}
