@@ -1,38 +1,24 @@
-# CuraNet — One Website for Every Health Decision (MERN)
+# CuraNet Frontend — Healthcare Literacy Hub
 
-## MongoDB Atlas Provisioning
-Connection string in `db.txt` → copied to `.env` as `MONGO_URI` (never hardcoded).
+This is the frontend-only implementation for the CuraNet Healthcare Literacy Hub. It contains two separate feature folders: `src/features/courses/` and `src/features/firstAid/`.
 
-### Quick Start
-```bash
-npm install
-npm run seed   # provisions schemas, indexes, demo data
-npm run verify # checks counts & indexes
-```
+## Run the React website in VS Code
+1. Extract this ZIP.
+2. Open the `CuraNet-Frontend` folder in VS Code.
+3. Open Terminal in that folder.
+4. Run `npm install` once.
+5. Run `npm run dev`.
+6. Open the `http://localhost:5173` address shown by Vite.
 
-### Collections (11)
-`users` (shared identity) → `doctorProfiles`, `donorProfiles`, `patientProfiles` (extension via userId) → `bloodRequests`, `bloodDonations`, `appointments`, `reviews`, `courses` (lessons embedded), `enrollments`, `articles`.
+Do **not** double-click `index.html` for the React app; Vite must run the app.
 
-See `SCHEMA.md` for full fields/validation, `ER_DIAGRAM.md` for Mermaid/text diagram, `samples/sample-documents.json` for sample docs.
+## If you only want to see the content immediately
+Open `direct-demo.html` in a browser. It is a no-install visual demo containing the course list and first-aid/remedies list.
 
-### Key Indexes
-- Unique `users.email`, `doctorProfiles.licenseNumber`, `courses.slug`, `articles.slug`
-- `2dsphere` on all location fields (donor/doctor/bloodRequest geospatial)
-- Text indexes on doctor search, courses, articles
-- Unique `doctorId+appointmentDate+timeSlot.startTime` prevents double booking
-- Unique `userId+courseId` prevents duplicate enrollments
-
-### Transparent Rule-Based Matching (not AI black-box)
-- Doctor: `specialty + location $near + availabilitySlots + isVerifiedByAdmin` sorted by rating/fee
-- Blood: `bloodGroup + isAvailable + healthStatus + location $near`
-- See seed end logs for demo queries.
-
-### Embed vs Reference — Summary
-Embed: `availabilitySlots` in doctor, `emergencyContact` in patient, `lessons` in course, `timeSlot/ruleMatchMeta` in appointment.
-Reference: all cross-module entities via ObjectId (users, doctors, courses, requests).
-
-### Env
-```
-MONGO_URI=mongodb://curanetdb:***@ac-lw1esrd-shard-00-*.mongodb.net:27017,.../?ssl=true&replicaSet=atlas-y2z4bu-shard-0&authSource=admin&appName=Cluster0
-DB_NAME=curanet
-```
+## Main routes
+- `/` — Home with visible Courses and First Aid sections
+- `/courses` — full course catalogue, search and category filter
+- `/courses/:courseId` — course details and enrollment
+- `/courses/:courseId/lessons/:lessonId` — lesson viewer and progress
+- `/first-aid` — complete first-aid topic list and search
+- `/first-aid/:topicId` — measures, avoid list and when-to-seek-help

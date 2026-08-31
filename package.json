@@ -1,17 +1,21 @@
 {
-  "name": "curanet-db",
+  "name": "curanet-frontend",
+  "private": true,
   "version": "1.0.0",
-  "description": "CuraNet - One Website for Every Health Decision - MongoDB Atlas provisioning (MERN)",
-  "type": "commonjs",
-  "main": "src/seed/seed.js",
+  "type": "module",
   "scripts": {
-    "seed": "node src/seed/seed.js",
-    "provision": "node src/seed/seed.js",
-    "verify": "node src/verify.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "mongoose": "^8.9.5",
-    "bcryptjs": "^2.4.3"
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.5"
   }
 }
