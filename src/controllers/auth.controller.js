@@ -23,8 +23,8 @@ exports.register = async (req, res, next) => {
 
     if (recaptchaToken) {
       await createAssessment({
-        projectID: "curanet-a36d6",
-        recaptchaKey: "6LeoD6EtAAAAAOi1ikbDSV3FvIBAK4VYDoMNmN3k",
+        projectID: process.env.GOOGLE_CLOUD_PROJECT_ID,
+        recaptchaKey: process.env.RECAPTCHA_SITE_KEY,
         token: recaptchaToken,
         recaptchaAction: "REGISTER",
       });
@@ -73,8 +73,8 @@ exports.login = async (req, res, next) => {
 
     if (recaptchaToken) {
       await createAssessment({
-        projectID: "curanet-a36d6",
-        recaptchaKey: "6LeoD6EtAAAAAOi1ikbDSV3FvIBAK4VYDoMNmN3k",
+        projectID: process.env.GOOGLE_CLOUD_PROJECT_ID,
+        recaptchaKey: process.env.RECAPTCHA_SITE_KEY,
         token: recaptchaToken,
         recaptchaAction: "LOGIN",
       });

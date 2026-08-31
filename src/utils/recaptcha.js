@@ -14,8 +14,8 @@ try {
  * recaptchaAction: Action name corresponding to the token.
  */
 async function createAssessment({
-  projectID = "curanet-a36d6",
-  recaptchaKey = "6LeoD6EtAAAAAOi1ikbDSV3FvIBAK4VYDoMNmN3k",
+  projectID = process.env.GOOGLE_CLOUD_PROJECT_ID || "your-gcp-project-id",
+  recaptchaKey = process.env.RECAPTCHA_SITE_KEY || "your-recaptcha-site-key",
   token = "action-token",
   recaptchaAction = "action-name",
 }) {

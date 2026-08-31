@@ -9,15 +9,15 @@ import {
   signOut,
 } from "firebase/auth";
 
-// Your web app's Firebase configuration
+// Firebase configuration — values injected from .env via Vite
 const firebaseConfig = {
-  apiKey: "AIzaSyCxsHyw6YwNGZ0mi2HF8kX9KYxs08g-cH0",
-  authDomain: "curanet-a36d6.firebaseapp.com",
-  projectId: "curanet-a36d6",
-  storageBucket: "curanet-a36d6.firebasestorage.app",
-  messagingSenderId: "704696197812",
-  appId: "1:704696197812:web:cb0161da4b39450ff5ede1",
-  measurementId: "G-LJX0YGQK0S",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

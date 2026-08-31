@@ -1,4 +1,4 @@
-export const RECAPTCHA_SITE_KEY = "6LeoD6EtAAAAAOi1ikbDSV3FvIBAK4VYDoMNmN3k";
+export const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
 /**
  * Executes reCAPTCHA Enterprise action and returns token
