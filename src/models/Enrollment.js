@@ -5,7 +5,7 @@ const enrollmentSchema = new mongoose.Schema({
   courseId: { type: mongoose.Schema.Types.ObjectId, ref: 'Course', required: true, index: true },
   progress: { type: Number, min: 0, max: 100, default: 0 },
   completedLessonIds: [{ type: mongoose.Schema.Types.ObjectId }],
-  status: { type: String, enum: ['enrolled','in_progress','completed','dropped'], default: 'enrolled', index: true },
+  status: { type: String, enum: ['enrolled','in_progress','completed','dropped'], default: 'enrolled' },
   enrolledAt: { type: Date, default: Date.now },
   completedAt: { type: Date },
   lastAccessedAt: { type: Date },

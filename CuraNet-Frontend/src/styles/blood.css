@@ -1,0 +1,102 @@
+.blood-banner {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  position: relative;
+  margin-bottom: 28px;
+}
+.blood-banner img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.blood-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(156, 23, 48, 0.9) 0%, rgba(156, 23, 48, 0.4) 55%, rgba(156, 23, 48, 0) 100%);
+}
+.blood-banner-text {
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  max-width: 420px;
+  z-index: 2;
+}
+.blood-banner-text h2 {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  margin: 6px 0 0;
+}
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.type-tile {
+  text-align: center;
+  padding: 12px 4px;
+}
+.type-tile .type-label {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--medical-red);
+}
+.type-tile .type-count {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+}
+@media (max-width: 700px) {
+  .type-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.blood-forms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.blood-forms .card {
+  padding: 24px;
+}
+.blood-forms h3 {
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+.blood-forms .input {
+  margin-bottom: 12px;
+}
+@media (max-width: 760px) {
+  .blood-forms {
+    grid-template-columns: 1fr;
+  }
+}
+
+.donor-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.donor-table th,
+.donor-table td {
+  text-align: left;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.donor-table th {
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.78rem;
+  border-top: 1px solid var(--line);
+}

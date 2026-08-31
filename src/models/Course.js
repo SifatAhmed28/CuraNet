@@ -22,7 +22,7 @@ const lessonSchema = new mongoose.Schema({
 
 const courseSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true, maxlength: 200 },
-  slug: { type: String, required: true, unique: true, lowercase: true, trim: true, match: [/^[a-z0-9\-]+$/, 'slug: a-z,0-9,-'] },
+  slug: { type: String, required: true, lowercase: true, trim: true, match: [/^[a-z0-9\-]+$/, 'slug: a-z,0-9,-'] },
   description: { type: String, required: true, maxlength: 5000 },
   category: {
     type: String, required: true, enum: ['nutrition','mental_health','chronic_disease','first_aid','maternal_health','infectious_disease','general_wellness','preventive_care'], index: true

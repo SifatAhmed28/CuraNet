@@ -10,7 +10,7 @@ const availabilitySlotSchema = new mongoose.Schema({
 
 const doctorProfileSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, unique: true, index: true },
-  specialization: { type: [String], required: true, validate: v => v.length > 0, index: true }, // e.g. Cardiology
+  specialization: { type: [String], required: true, validate: v => v.length > 0 }, // e.g. Cardiology
   qualifications: { type: [String], required: true, validate: v => v.length>0 }, // MBBS, MD
   experienceYears: { type: Number, required: true, min: 0, max: 60 },
   licenseNumber: { type: String, required: true, unique: true, trim: true, match: [/^[A-Z0-9\-\/]{5,30}$/, 'Invalid license'] },
@@ -25,7 +25,7 @@ const doctorProfileSchema = new mongoose.Schema({
   languages: { type: [String], default: ['English'] },
   ratingAvg: { type: Number, min: 0, max: 5, default: 0 },
   ratingCount: { type: Number, min: 0, default: 0 },
-  isVerifiedByAdmin: { type: Boolean, default: false, index: true },
+  isVerifiedByAdmin: { type: Boolean, default: false },
   consultationTypes: { type: [String], enum: ['online','offline','both'], default: ['both'] },
   availabilitySlots: { type: [availabilitySlotSchema], default: [] }
 }, { timestamps: true });

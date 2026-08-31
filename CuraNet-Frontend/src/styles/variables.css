@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* Brand red — the primary theme color, used across nav, headings,
+     buttons, and borders. */
+  --clinical-900: #7a0e1f;
+  --clinical-700: #a3122d;
+  --clinical-500: #c81e3a;
+  --clinical-100: #fbe2e6;
+
+  /* Medical red — reserved for the cross mark, emergencies, and blood. */
+  --medical-red: #c81e3a;
+  --medical-red-dark: #9c1730;
+  --medical-red-100: #fbe2e6;
+
+  --gold: #c98a1b;
+  --gold-100: #faf0dc;
+
+  --ink: #10242b;
+  --ink-soft: #52666d;
+  --bg: #f5f9fa;
+  --card: #ffffff;
+  --line: #dce7ea;
+
+  --display: "Merriweather", Georgia, serif;
+  --body: "Inter", Arial, sans-serif;
+  --mono: "JetBrains Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--body);
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.display {
+  font-family: var(--display);
+}
+
+.mono {
+  font-family: var(--mono);
+  letter-spacing: 0.02em;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clinical-500);
+  margin-bottom: 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 3px 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-primary {
+  background: var(--clinical-700);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--clinical-900);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--clinical-700);
+  border: 1.5px solid var(--clinical-700);
+}
+.btn-outline:hover {
+  background: var(--clinical-100);
+}
+.btn-red {
+  background: var(--medical-red);
+  color: #fff;
+}
+.btn-red:hover {
+  background: var(--medical-red-dark);
+}
+
+.section {
+  padding: 56px 0;
+}
+.section-tight {
+  padding: 32px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input {
+  width: 100%;
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  padding: 11px 14px;
+  font-family: var(--body);
+  font-size: 0.9rem;
+  background: #fff;
+  outline: none;
+}
+.input:focus {
+  border-color: var(--clinical-500);
+}
+
+.notice {
+  padding: 14px 16px;
+  background: var(--gold-100);
+  border: 1px solid #ecd9ac;
+  border-radius: 8px;
+  color: #745b28;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.cross-mark {
+  color: var(--medical-red);
+}
+
+/* Opacity pulse used in place of static emoji icons. */
+@keyframes pulse-opacity {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse-icon {
+  animation: pulse-opacity 1.8s ease-in-out infinite;
+}
