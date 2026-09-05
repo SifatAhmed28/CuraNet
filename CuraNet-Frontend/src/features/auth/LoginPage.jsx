@@ -129,9 +129,10 @@ export default function LoginPage() {
               <div className="auth-input-wrapper">
                 <Mail size={18} className="input-icon-left" />
                 <input
-                  type="email"
+                  type="text"
+                  style={{ paddingLeft: "46px" }}
                   className="modern-input"
-                  placeholder="name@example.com"
+                  placeholder="admin or name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -147,7 +148,7 @@ export default function LoginPage() {
                 <input
                   type={showPw ? "text" : "password"}
                   className="modern-input"
-                  style={{ paddingRight: 40 }}
+                  style={{ paddingLeft: "46px", paddingRight: "44px" }}
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

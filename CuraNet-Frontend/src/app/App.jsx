@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "../context/AuthContext";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Home from "../pages/Home";
 import CourseHub from "../features/courses/CourseHub";
 import CourseDetails from "../features/courses/CourseDetails";
@@ -52,15 +53,7 @@ function AppRoutes() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <footer className="site-footer">
-        <div className="container footer-inner">
-          <div>
-            <strong>CuraNet</strong>
-            <span> — One Website for Every Health Decision</span>
-          </div>
-          <div className="footer-note">Educational content only • Full-stack MERN application</div>
-        </div>
-      </footer>
+      <Footer />
       <SymptomChatbot />
     </div>
   );

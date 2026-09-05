@@ -8,10 +8,14 @@ const {
   registerDonor,
   createDonation,
   getBloodStats,
+  getMyDonorProfile,
+  getMyBloodRequests,
 } = require('../controllers/blood.controller');
 const { protect } = require('../middleware/auth');
 
 router.get('/stats', getBloodStats);
+router.get('/donors/me', protect, getMyDonorProfile);
+router.get('/requests/mine', protect, getMyBloodRequests);
 router.get('/requests', listBloodRequests);
 router.post('/requests', protect, createBloodRequest);
 router.put('/requests/:id', protect, updateBloodRequest);

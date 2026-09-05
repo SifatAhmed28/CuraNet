@@ -58,7 +58,11 @@ api.auth = {
 api.doctors = {
   list: (params = "") => api.get(`/doctors${params ? `?${params}` : ""}`),
   get: (id) => api.get(`/doctors/${id}`),
+  getMe: () => api.get("/doctors/me"),
+  updateMe: (data) => api.put("/doctors/me", data),
+  updateProfile: (id, data) => api.put(`/doctors/${id}`, data),
   match: (symptoms) => api.get(`/doctors/match?symptoms=${encodeURIComponent(symptoms)}`),
+  locations: () => api.get("/doctors/locations"),
 };
 
 // Appointments
@@ -66,6 +70,10 @@ api.appointments = {
   create: (data) => api.post("/appointments", data),
   list: (params = "") => api.get(`/appointments${params ? `?${params}` : ""}`),
   update: (id, data) => api.put(`/appointments/${id}`, data),
+  cancel: (id, data = {}) => api.put(`/appointments/${id}/cancel`, data),
+  getDoctorSlots: (doctorId, date) => api.get(`/appointments/doctor/${doctorId}/slots?date=${date}`),
+  createPaymentIntent: (data) => api.post("/appointments/payment-intent", data),
+  confirmPayment: (data) => api.post("/appointments/confirm-payment", data),
 };
 
 // Reviews
@@ -78,8 +86,10 @@ api.reviews = {
 api.blood = {
   stats: () => api.get("/blood/stats"),
   requests: (params = "") => api.get(`/blood/requests${params ? `?${params}` : ""}`),
+  myRequests: () => api.get("/blood/requests/mine"),
   createRequest: (data) => api.post("/blood/requests", data),
   donors: (params = "") => api.get(`/blood/donors${params ? `?${params}` : ""}`),
+  myDonorProfile: () => api.get("/blood/donors/me"),
   registerDonor: (data) => api.post("/blood/donors", data),
 };
 
@@ -87,6 +97,7 @@ api.blood = {
 api.courses = {
   list: (params = "") => api.get(`/courses${params ? `?${params}` : ""}`),
   get: (idOrSlug) => api.get(`/courses/${idOrSlug}`),
+  create: (data) => api.post("/courses", data),
   enroll: (id) => api.post(`/courses/${id}/enroll`),
   completeLesson: (courseId, lessonId) => api.put(`/courses/${courseId}/lessons/${lessonId}/complete`),
   myEnrollments: () => api.get("/courses/enrollments/me"),
@@ -96,7 +107,21 @@ api.courses = {
 api.articles = {
   list: (params = "") => api.get(`/articles${params ? `?${params}` : ""}`),
   get: (slug) => api.get(`/articles/${slug}`),
+  create: (data) => api.post("/articles", data),
   like: (id) => api.post(`/articles/${id}/like`),
+};
+
+// Users & Profile
+api.users = {
+  profile: () => api.get("/users/profile"),
+  updateProfile: (data) => api.put("/users/profile", data),
+};
+
+// Admin Management
+api.admin = {
+  stats: () => api.get("/users/admin/stats"),
+  users: (params = "") => api.get(`/users${params ? `?${params}` : ""}`),
+  updateRole: (id, data) => api.put(`/users/${id}/role`, data),
 };
 
 export default api;

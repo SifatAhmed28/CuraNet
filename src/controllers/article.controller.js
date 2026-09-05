@@ -80,3 +80,43 @@ exports.likeArticle = async (req, res, next) => {
     next(err);
   }
 };
+
+/**
+ * POST /api/articles — create article (doctor or admin)
+ */
+exports.createArticle = async (req, res, next) => {
+  try {
+    const { title, excerpt, content, category, tags, coverImageUrl } = req.body;
+    if (!title || !content || !category) {
+      return res.status(400).json({ success: false, message: 'Title, content, and category are required' });
+    }
+
+    const baseSlug = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)+/g, '')
+      .slice(0, 80);
+    const slug = `${baseSlug}-${Date.now().toString().slice(-4)}`;
+
+    const words = content.split(/\s+/).length;
+    const readingTimeMinutes = Math.max(1, Math.round(words / 200));
+
+    const article = await Article.create({
+      title,
+      slug,
+      excerpt: excerpt || content.slice(0, 160),
+      content,
+      category,
+      tags: tags || [],
+      coverImageUrl: coverImageUrl || undefined,
+      readingTimeMinutes,
+      authorId: req.user._id,
+      isPublished: true,
+      publishedAt: new Date(),
+    });
+
+    res.status(201).json({ success: true, data: article });
+  } catch (err) {
+    next(err);
+  }
+};

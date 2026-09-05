@@ -159,3 +159,62 @@ exports.getMyEnrollments = async (req, res, next) => {
     next(err);
   }
 };
+
+/**
+ * POST /api/courses — create and launch course (doctor or admin)
+ */
+exports.createCourse = async (req, res, next) => {
+  try {
+    const {
+      title,
+      description,
+      category,
+      level,
+      thumbnailUrl,
+      tags,
+      lessons,
+      durationMinutes,
+    } = req.body;
+
+    if (!title || !description || !category) {
+      return res.status(400).json({ success: false, message: 'Title, description, and category are required' });
+    }
+
+    const baseSlug = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)+/g, '')
+      .slice(0, 60);
+    const slug = `${baseSlug || 'course'}-${Date.now().toString().slice(-4)}`;
+
+    const initialLessons = Array.isArray(lessons) && lessons.length > 0 ? lessons : [
+      {
+        title: 'Course Introduction & Clinical Fundamentals',
+        description: 'Comprehensive orientation and foundational healthcare concepts',
+        contentType: 'article',
+        content: description,
+        durationMinutes: Number(durationMinutes) || 30,
+        order: 1,
+        isPreview: true,
+      }
+    ];
+
+    const course = await Course.create({
+      title,
+      slug,
+      description,
+      category,
+      level: level || 'beginner',
+      instructorId: req.user._id,
+      thumbnailUrl: thumbnailUrl || 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80',
+      tags: Array.isArray(tags) ? tags : (tags ? tags.split(',').map(t => t.trim().toLowerCase()).filter(Boolean) : []),
+      durationMinutes: Number(durationMinutes) || 30,
+      isPublished: true,
+      lessons: initialLessons,
+    });
+
+    res.status(201).json({ success: true, message: 'Course launched successfully!', data: course });
+  } catch (err) {
+    next(err);
+  }
+};

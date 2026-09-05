@@ -9,7 +9,8 @@
     "dev": "node --watch src/server.js",
     "seed": "node src/seed/seed.js",
     "provision": "node src/seed/seed.js",
-    "verify": "node src/verify.js"
+    "verify": "node src/verify.js",
+    "import-doctors": "node src/scripts/importDoctors.js"
   },
   "dependencies": {
     "@google-cloud/recaptcha-enterprise": "^7.1.0",
@@ -19,6 +20,7 @@
     "express": "^4.21.0",
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.5"
+    "mongoose": "^8.9.5",
+    "stripe": "^22.6.1"
   }
 }

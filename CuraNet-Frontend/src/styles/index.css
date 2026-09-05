@@ -445,8 +445,10 @@ h1,h2,h3 { font-family: "Manrope", sans-serif; margin-top: 0; }
   color: #475569;
 }
 
-.auth-input-wrapper input {
-  padding-left: 44px;
+.auth-input-wrapper input,
+.input-with-icon-left,
+input.has-icon-left {
+  padding-left: 44px !important;
 }
 
 .auth-role-grid {

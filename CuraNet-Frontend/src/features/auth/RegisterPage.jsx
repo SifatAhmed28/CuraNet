@@ -132,6 +132,7 @@ export default function RegisterPage() {
                 <User size={18} className="input-icon-left" />
                 <input
                   type="text"
+                  style={{ paddingLeft: "46px" }}
                   className="modern-input"
                   placeholder="Dr. / Mr. / Ms. Full Name"
                   value={form.name}
@@ -149,6 +150,7 @@ export default function RegisterPage() {
                   <Mail size={18} className="input-icon-left" />
                   <input
                     type="email"
+                    style={{ paddingLeft: "46px" }}
                     className="modern-input"
                     placeholder="you@email.com"
                     value={form.email}
@@ -164,6 +166,7 @@ export default function RegisterPage() {
                   <Phone size={18} className="input-icon-left" />
                   <input
                     type="tel"
+                    style={{ paddingLeft: "46px" }}
                     className="modern-input"
                     placeholder="+8801700000000"
                     value={form.phone}
@@ -180,7 +183,7 @@ export default function RegisterPage() {
                 <input
                   type={showPw ? "text" : "password"}
                   className="modern-input"
-                  style={{ paddingRight: 40 }}
+                  style={{ paddingLeft: "46px", paddingRight: "44px" }}
                   placeholder="Min 6 characters"
                   value={form.password}
                   onChange={set("password")}

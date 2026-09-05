@@ -11,3 +11,5 @@ dist/
 coverage/
 CuraNet-Frontend/.env
 CuraNet-Frontend/dist/
+dataset/
+

@@ -9,7 +9,7 @@ const timeSlotEmbedded = new mongoose.Schema({
 const appointmentSchema = new mongoose.Schema({
   patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, index: true },
   doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'DoctorProfile', required: true, index: true },
-  doctorUserId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, index: true },
+  doctorUserId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false, index: true },
   appointmentDate: { type: Date, required: true, index: true },
   timeSlot: { type: timeSlotEmbedded, required: true },
   consultationType: { type: String, enum: ['online','offline'], required: true, default: 'offline' },
@@ -18,6 +18,11 @@ const appointmentSchema = new mongoose.Schema({
   notes: { type: String, maxlength: 1000 },
   fee: { type: Number, required: true, min: 0 },
   prescriptionNotes: { type: String, maxlength: 2000 },
+  paymentStatus: { type: String, enum: ['unpaid', 'paid', 'refunded'], default: 'unpaid', index: true },
+  paymentMethod: { type: String, default: 'stripe' },
+  stripePaymentIntentId: { type: String, index: true },
+  paidAt: { type: Date },
+  currency: { type: String, default: 'bdt' },
   // Transparent rule-based matching metadata (NOT AI black-box)
   ruleMatchMeta: {
     matchedSpecialty: { type: String },
