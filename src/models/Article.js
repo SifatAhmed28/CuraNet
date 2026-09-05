@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const articleSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true, maxlength: 300 },
-  slug: { type: String, required: true, unique: true, lowercase: true, trim: true, match: [/^[a-z0-9\-]+$/, 'slug invalid'] },
+  slug: { type: String, required: true, lowercase: true, trim: true, match: [/^[a-z0-9\-]+$/, 'slug invalid'] },
   excerpt: { type: String, maxlength: 300 },
   content: { type: String, required: true, maxlength: 20000 },
   category: { type: String, required: true, enum: ['nutrition','mental_health','chronic_disease','first_aid','maternal_health','infectious_disease','general_wellness','preventive_care'], index: true },

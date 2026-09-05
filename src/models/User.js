@@ -4,9 +4,8 @@ const bcrypt = require('bcryptjs');
 const userSchema = new mongoose.Schema({
   name: { type: String, required: [true, 'name required'], trim: true, minlength: 2, maxlength: 100 },
   email: {
-    type: String, required: true, unique: true, lowercase: true, trim: true,
+    type: String, required: true, lowercase: true, trim: true,
     match: [/^\S+@\S+\.\S+$/, 'Invalid email'],
-    index: true
   },
   passwordHash: { type: String, required: true, minlength: 6, select: false },
   phone: {
@@ -14,7 +13,7 @@ const userSchema = new mongoose.Schema({
     match: [/^\+?[0-9]{7,15}$/, 'Invalid phone (E.164)'],
   },
   role: {
-    type: String, required: true, enum: ['guest', 'patient', 'customer', 'doctor', 'donor', 'admin'], default: 'patient', index: true
+    type: String, required: true, enum: ['guest', 'patient', 'customer', 'doctor', 'donor', 'admin'], default: 'patient'
   },
   additionalRoles: [{ type: String, enum: ['guest', 'patient', 'customer', 'doctor', 'donor', 'admin'] }],
   avatarUrl: { type: String, match: [/^https?:\/\/.+/, 'Invalid URL'] },

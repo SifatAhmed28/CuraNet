@@ -1,8 +1,15 @@
 node_modules/
 .env
+.env.local
+.env.development
+.env.production
 db.txt
 *.log
 .DS_Store
 npm-debug.log*
 dist/
 coverage/
+CuraNet-Frontend/.env
+CuraNet-Frontend/dist/
+dataset/
+

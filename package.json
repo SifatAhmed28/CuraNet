@@ -1,17 +1,26 @@
 {
-  "name": "curanet-db",
+  "name": "curanet-backend",
   "version": "1.0.0",
-  "description": "CuraNet - One Website for Every Health Decision - MongoDB Atlas provisioning (MERN)",
+  "description": "CuraNet - One Website for Every Health Decision - MERN Backend API",
   "type": "commonjs",
-  "main": "src/seed/seed.js",
+  "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
     "seed": "node src/seed/seed.js",
     "provision": "node src/seed/seed.js",
-    "verify": "node src/verify.js"
+    "verify": "node src/verify.js",
+    "import-doctors": "node src/scripts/importDoctors.js"
   },
   "dependencies": {
+    "@google-cloud/recaptcha-enterprise": "^7.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.5",
-    "bcryptjs": "^2.4.3"
+    "stripe": "^22.6.1"
   }
 }

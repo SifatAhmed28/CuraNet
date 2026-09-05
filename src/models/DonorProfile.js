@@ -15,7 +15,7 @@ const donorProfileSchema = new mongoose.Schema({
     coordinates: { type: [Number], required: true }
   },
   address: { type: String, required: true, maxlength: 500 },
-  healthStatus: { type: String, enum: ['eligible','temporarily_deferred','ineligible'], default: 'eligible', index: true },
+  healthStatus: { type: String, enum: ['eligible','temporarily_deferred','ineligible'], default: 'eligible' },
   weightKg: { type: Number, min: 45, max: 200 },
   phoneVisible: { type: Boolean, default: false },
   emergencyContact: {
